@@ -25,7 +25,7 @@ if ERRORLEVEL 1 (
 
 REM Commit changes with the provided message
 echo Committing changes...
-git commit -m "%*"
+git commit -m %*
 
 REM Check if git commit was successful
 if ERRORLEVEL 1 (

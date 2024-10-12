@@ -103,7 +103,7 @@ document.addEventListener("keydown", (e) => {
             break;
 
     }
-    console.log(mode);
+   
 });
 
 document.addEventListener("keyup", (e) => {
