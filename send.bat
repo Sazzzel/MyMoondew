@@ -1,4 +1,5 @@
 @echo off
+echo *.bat > .gitignore
 REM send.bat - Automate git add, commit, and push with a custom message.
 
 REM Check if a commit message is provided
