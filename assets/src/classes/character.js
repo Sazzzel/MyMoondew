@@ -9,10 +9,12 @@ class Character{
         this.frame = 0;
         this.frameWidth = 16;
         this.frameHeight = 72/4;
-        this.framedelay = 15;
+        this.framedelay = 30;
         this.frameCounter = 0;
         this.lastFrame = 2;
         this.direction = 2;
+        this.speed = 0.5;
+        this.sprint = false;
         this.x = 0;
         this.y = 0;
         this.vx = 0;
@@ -27,6 +29,26 @@ class Character{
 
         this.x -= this.vx;
         this.y += this.vy;
+        if (this.sprint){
+            this.x -= this.vx;
+            this.y += this.vy;
+        }
+        
+
+        if (this.y > 5400){
+            this.y = 5400;
+        }
+
+        if (this.y < -5400){
+            this.y = -5400;
+        }
+        if (this.x > 5400){
+            this.x = 5400;
+        }
+        if (this.x < -5400){
+            this.x = -5400;
+        }
+        
 
         if (this.frame > this.lastFrame){
             this.frame = 0;
@@ -43,6 +65,10 @@ class Character{
 
         } 
         this.frameCounter++;
+        if(this.sprint){
+            this.frameCounter++;
+        }
+        
         
        
     }

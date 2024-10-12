@@ -7,14 +7,14 @@ let fullScreenModal = new Image();
 fullScreenModal.src = "./assets/images/FullScreenModal.png";
 
 function gameLoop (){
-    
-    world.draw(ctx, character.x, character.y);
-    character.draw();
-    actionBar.draw(ctx, mode);
-    if (!fullscreen){
-        ctx.drawImage(fullScreenModal, 0, 0);
+    if (canPlay){
+        world.draw(ctx, character.x, character.y);
+        character.draw();
+        actionBar.draw(ctx, mode);
+        if (!fullscreen){
+            ctx.drawImage(fullScreenModal, 0, 0);
+        }
     }
-    
     requestAnimationFrame(gameLoop);
 }
 
@@ -34,16 +34,39 @@ tools.push(true);
 tools.push(true);
 tools.push(true);
 
-let logo = new Image();
+const music = new Audio("./assets/audio/music.mp3");
+music.loop = true;
+music.volume = 0.2;
+
+
+const logo = new Image();
 logo.src = "./assets/images/Logo.png";
-let logoa = new Image();
+const logoa = new Image();
 logoa.src = "./assets/images/LogoA.png";
-let logob = new Image();
+const logob = new Image();
 logob.src = "./assets/images/LogoB.png";
-logo.onload = function (){
+
+logoa.onload = function () {
+
     ctx.drawImage(logoa, 0, 0);
-    setTimeout(logoStage1, 2000);
-}
+
+};  
+   
+
+
+let canPlay =false;
+
+document.addEventListener("click", () => {
+    if (!canPlay){
+        canPlay = true;
+        music.play();
+        
+        logoStage1();
+
+    }
+    
+});
+
 let stage1op = 0
 function logoStage1 (){
     let stage1 = setInterval(() => {
@@ -55,7 +78,7 @@ function logoStage1 (){
             clearInterval(stage1);
             stage1op = 0;
             ctx.globalAlpha = stage1op;
-            setTimeout(logoStage2, 500);
+            setTimeout(logoStage2, 2500);
         }
     }, 10);
     

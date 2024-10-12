@@ -18,13 +18,17 @@ class Tile {
                 this.img.src = "../MyMoondew/assets/images/Stone.png";
                 break;
 
+            case"dirt":
+                this.img.src = "../MyMoondew/assets/images/Dirt.png";
+                break;
+
             
         }
     }
 
     draw (ctx, x, y){
         if (this.distance(x, y) <= this.drawDis){
-            ctx.drawImage(this.img, (x - this.x) + (1920 / 2), (y - this.y) + (1080 / 2));
+            ctx.drawImage(this.img, (x - this.x) + (1920 / 2), (y - this.y) + (1080 / 2), 32, 32);
 
         }
     }
@@ -39,7 +43,13 @@ class World {
         this.tiles = [];
         for (let x = -200; x < 200; x++){
             for (let y = -200; y < 200; y++){
-                this.tiles.push(new Tile(x * 64, y * 64, "grass", false, drawDis));
+                if (x % 2 == 1){
+                    this.tiles.push(new Tile(x * 32, y * 32, "grass", false, drawDis));
+                } else {
+                    this.tiles.push(new Tile(x * 32, y * 32, "dirt", false, drawDis));
+                }
+
+                
             }
         }
         

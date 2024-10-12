@@ -1,25 +1,28 @@
 document.addEventListener("keydown", (e) => {
 
     switch (e.key){
+        case"Shift":
+            character.sprint = true;
+            break;
 
         case"w":
             character.setDirection("up");
-            character.vy = 1;
+            character.vy = character.speed;
             break;
 
         case"a":
             character.setDirection("left");
-            character.vx = -1;
+            character.vx = -character.speed;
             break;
 
         case"s":
             character.setDirection("down");
-            character.vy = -1;
+            character.vy = -character.speed;
             break;
 
         case"d":
             character.setDirection("right");
-            character.vx = 1;
+            character.vx = character.speed;
             break;
 
         case"0":
@@ -136,31 +139,34 @@ let fullscreen = false;
 document.addEventListener("keyup", (e) => {
 
     switch (e.key){
-
+        case"Shift":
+            character.sprint = false;
+            break;
+            
         case"w":
             
-            if(character.vy == 1){
+            if(character.vy > 0){
                 character.vy = 0;
             }
             break;
 
         case"a":
             
-            if (character.vx == -1){
+            if (character.vx < 0){
                 character.vx = 0;
             }
             break;
 
         case"s":
             
-            if (character.vy == -1){
+            if (character.vy < 0){
                 character.vy = 0;
             }
             break;
 
         case"d":
             
-            if (character.vx == 1){
+            if (character.vx > 0){
                 character.vx = 0;
             }
             break;
