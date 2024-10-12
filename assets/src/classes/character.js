@@ -24,6 +24,10 @@ class Character{
     }
     //where and how to draw charater
     draw(){
+
+        this.x -= this.vx;
+        this.y += this.vy;
+
         if (this.frame > this.lastFrame){
             this.frame = 0;
                
