@@ -4,7 +4,7 @@ class Action {
         this.x = x;
         this.y = y;
         this.mode = mode;
-        this.img.src="../assets/images/" + imgPath;
+        this.img.src="../MyMoondew/assets/images/" + imgPath;
         
     }
     draw (ctx) {
@@ -18,9 +18,9 @@ class Action {
 class ActionBar {
     constructor (x, y) {
         this.img = new Image();
-        this.img.src = "../assets/images/BarBack.png";
+        this.img.src = "../MyMoondew/assets/images/BarBack.png";
         this.imgFrame = new Image();
-        this.imgFrame.src = "../assets/images/ActionSelected.png";
+        this.imgFrame.src = "../MyMoondew/assets/images/ActionSelected.png";
         this.x = x;
         this.y = y;
         this.actionOffsetX = 5;

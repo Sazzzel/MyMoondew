@@ -3,7 +3,7 @@ class Character{
     constructor(ctx){
         this.ctx = ctx;
         this.img = new Image();
-        this.img.src="../assets/images/char.png";
+        this.img.src="../MyMoondew/assets/images/char.png";
         this.drawWidth = 42;
         this.drawHeight = 42;
         this.frame = 0;
