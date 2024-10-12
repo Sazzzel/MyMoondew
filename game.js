@@ -7,8 +7,7 @@ let fullScreenModal = new Image();
 fullScreenModal.src = "./assets/images/FullScreenModal.png";
 
 function gameLoop (){
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, 1920, 1080);
+    
     world.draw(ctx, character.x, character.y);
     character.draw();
     actionBar.draw(ctx, mode);
@@ -35,5 +34,68 @@ tools.push(true);
 tools.push(true);
 tools.push(true);
 
-gameLoop();
+let logo = new Image();
+logo.src = "./assets/images/Logo.png";
+let logoa = new Image();
+logoa.src = "./assets/images/LogoA.png";
+let logob = new Image();
+logob.src = "./assets/images/LogoB.png";
+logo.onload = function (){
+    ctx.drawImage(logoa, 0, 0);
+    setTimeout(logoStage1, 2000);
+}
+let stage1op = 0
+function logoStage1 (){
+    let stage1 = setInterval(() => {
+
+        stage1op += 0.005;
+        ctx.globalAlpha = stage1op;
+        ctx.drawImage(logob, 0, 0);
+        if (stage1op >= 1){
+            clearInterval(stage1);
+            stage1op = 0;
+            ctx.globalAlpha = stage1op;
+            setTimeout(logoStage2, 500);
+        }
+    }, 10);
+    
+    
+}
+
+
+
+function logoStage2 (){
+    
+    let stage2 = setInterval(() => {
+
+        stage1op += 0.005;
+        ctx.globalAlpha = stage1op;
+        ctx.drawImage(logo, 0, 0);
+        if (stage1op >= 1){
+            clearInterval(stage2);
+            stage1op = 0;
+            ctx.globalAlpha = stage1op;
+            setTimeout(logoStage3, 3000);
+        }
+    }, 10);
+    
+}
+
+function logoStage3 (){
+    gameLoop();
+    let stage3 = setInterval(() => {
+
+        stage1op += 0.01;
+        ctx.globalAlpha = stage1op;
+        
+        if (stage1op >= 1){
+            clearInterval(stage3);
+            
+        }
+    }, 10);
+    
+}
+
+
+
 console.log(tools.length);
