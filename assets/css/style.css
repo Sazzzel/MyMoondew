@@ -1,0 +1,9 @@
+#game{
+    width: 99.9vw;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    aspect-ratio: 16,9;
+}
+
