@@ -5,9 +5,10 @@ let mode = 0; //0 = empty hands, 1 = hoe, 2 = trowel, 3 = watering can, 4 = syth
 let tools = [];
 let fullScreenModal = new Image();
 fullScreenModal.src = "./assets/images/FullScreenModal.png";
+let debug = false;
 
 function gameLoop (){
-    ctx.fillRect(0, 0, 1920, 1080);
+    
     if (canPlay){
         world.draw(ctx, character.x, character.y);
         character.draw();
@@ -39,7 +40,7 @@ tools.push(true);
 
 const music = new Audio("./assets/audio/music.mp3");
 music.loop = true;
-music.volume = 0.2;
+music.volume = 0.05;
 
 
 const logo = new Image();
@@ -64,7 +65,12 @@ document.addEventListener("click", () => {
         canPlay = true;
         music.play();
         
-        logoStage1();
+        if (!debug){
+            logoStage1();
+        } else {
+            gameLoop();
+        }
+       
 
     }
     
@@ -122,6 +128,3 @@ function logoStage3 (){
     
 }
 
-
-
-console.log(tools.length);

@@ -77,7 +77,7 @@ class World {
             
             for(let row of data){
                 for(let t of row){
-                    this.addTile(t.type, t.x, t.y, t.owned, t.canWalk);
+                    this.addTile(t.type, t.tileX, t.tileY, t.owned, t.canWalk);
                 }
             }
             
@@ -89,7 +89,7 @@ class World {
     }
 
     addTile(type, x, y, owned, canWalk){
-        this.tiles.push(new Tile(x, y, type, owned, this.drawDis));
+        this.tiles.push(new Tile(x * 64, y * 64, type, owned, this.drawDis));
     }
 
 }

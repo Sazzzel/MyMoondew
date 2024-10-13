@@ -13,7 +13,7 @@ class Character{
         this.frameCounter = 0;
         this.lastFrame = 2;
         this.direction = 2;
-        this.speed = 1;
+        this.speed = .5;
         this.sprint = false;
         this.x = -6400;
         this.y = -6400;
@@ -26,19 +26,30 @@ class Character{
     }
     //where and how to draw charater
     draw(){
-        console.log(this.x + " " + this.y);
-        this.x -= this.vx;
-        this.y += this.vy;
-        if (this.sprint){
-            this.x -= this.vx;
-            this.y += this.vy;
+        
+        let vx = this.vx;
+        let vy = this.vy;
+    
+        if (this.vx !== 0 && this.vy !== 0) {
+            vx /= (2);
+            vy /= (2);
         }
+
+        this.x -= vx;
+        this.y += vy;
+        
+        if (this.sprint){
+            this.x -= vx;
+            this.y += vy;
+        }
+
         // set dir based on vel
         
         if(this.vy>0) this.setDirection("up");
         if(this.vy<0) this.setDirection("down");
         if(this.vx>0) this.setDirection("right");
         if(this.vx<0) this.setDirection("left");
+
         if (this.y > -960){
             this.y = -960;
         }
