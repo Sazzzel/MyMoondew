@@ -33,8 +33,12 @@ class Character{
             this.x -= this.vx;
             this.y += this.vy;
         }
+        // set dir based on vel
         
-
+        if(this.vy>0) this.setDirection("up");
+        if(this.vy<0) this.setDirection("down");
+        if(this.vx>0) this.setDirection("right");
+        if(this.vx<0) this.setDirection("left");
         if (this.y > -960){
             this.y = -960;
         }

@@ -6,22 +6,18 @@ let key = e.key.toLowerCase();
             break;
 
         case"w":
-            character.setDirection("up");
             character.vy = character.speed;
             break;
 
         case"a":
-            character.setDirection("left");
             character.vx = -character.speed;
             break;
 
         case"s":
-            character.setDirection("down");
             character.vy = -character.speed;
             break;
 
         case"d":
-            character.setDirection("right");
             character.vx = character.speed;
             break;
 
