@@ -78,7 +78,7 @@ function logoStage1 (){
             clearInterval(stage1);
             stage1op = 0;
             ctx.globalAlpha = stage1op;
-            setTimeout(logoStage2, 2500);
+            setTimeout(logoStage2, 4000);
         }
     }, 10);
     

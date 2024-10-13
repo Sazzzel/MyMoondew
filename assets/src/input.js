@@ -1,7 +1,7 @@
 document.addEventListener("keydown", (e) => {
-
-    switch (e.key){
-        case"Shift":
+let key = e.key.toLowerCase();
+    switch (key){
+        case"shift":
             character.sprint = true;
             break;
 
@@ -106,7 +106,7 @@ document.addEventListener("keydown", (e) => {
             break;
 
     }
-    if(e.key === "p"){
+    if(key === "p"){
         e.preventDefault();
         fullscreen = !fullscreen;
         if(fullscreen){
@@ -137,12 +137,12 @@ document.addEventListener("keydown", (e) => {
 let fullscreen = false;
 
 document.addEventListener("keyup", (e) => {
-
-    switch (e.key){
-        case"Shift":
+let key = e.key.toLowerCase();
+    switch (key){
+        case"shift":
             character.sprint = false;
             break;
-            
+
         case"w":
             
             if(character.vy > 0){

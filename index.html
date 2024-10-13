@@ -15,6 +15,12 @@
 <body>
     <canvas id="game" width="1920px" height="1080px"></canvas>
 
+    <script>
+         document.getElementById("game").getContext("2d").font = "bold 42px Arial";
+         document.getElementById("game").getContext("2d").fillStyle = "white";
+        document.getElementById("game").getContext("2d").fillText("Loading...", 1920 / 2 - 100, 1080 / 2);
+    </script>
+
     <script src="./assets/src/classes/character.js"></script>
     <script src="./assets/src/classes/actionbar.js"></script>
     <script src="./assets/src/input.js"></script>
