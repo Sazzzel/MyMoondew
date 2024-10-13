@@ -36,36 +36,27 @@ class Tile {
 
             
         }
+        
     }
 
     draw (ctx, x, y){
         if (this.distance(x, y) <= this.drawDis){
-            ctx.drawImage(this.img, (x - this.x) + (1920 / 2), (y - this.y) + (1080 / 2), 32, 32);
-
+            ctx.drawImage(this.img, (x + this.x) + (1920 / 2), (y + this.y) + (1080 / 2), 64, 64);
+            
         }
     }
 
     distance (x, y){
-        return(Math.abs(x - this.x) + Math.abs(y - this.y));
+        return(Math.abs(this.x - (0 - x )) + Math.abs((0 - y) - this.y));
     }
 }
 
 class World {
     constructor (drawDis){
         this.tiles = [];
-        for (let x = -200; x < 200; x++){
-            for (let y = -200; y < 200; y++){
-                if (x % 2 == 1){
-                    this.tiles.push(new Tile(x * 32, y * 32, "grass", false, drawDis));
-                } else {
-                    this.tiles.push(new Tile(x * 32, y * 32, "dirt", false, drawDis));
-                }
-
-                
-            }
-        }
-        
-
+        this.drawDis = drawDis;
+        this.loadMapJson("");
+       
     }
 
     draw (ctx, x, y){
@@ -74,6 +65,33 @@ class World {
             tile.draw(ctx, x, y);
 
         });
-
     }
+
+    loadMapJson(mapName) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './assets/json/map.json', false); // false makes the request synchronous
+        xhr.send(null);
+
+        if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            
+            for(let row of data){
+                for(let t of row){
+                    this.addTile(t.type, t.x, t.y, t.owned, t.canWalk);
+                }
+            }
+            
+            // Display JSON data in the browser
+            
+        } else {
+            console.error('Error fetching the JSON file:', xhr.statusText);
+        }
+    }
+
+    addTile(type, x, y, owned, canWalk){
+        this.tiles.push(new Tile(x, y, type, owned, this.drawDis));
+    }
+
 }
+
+

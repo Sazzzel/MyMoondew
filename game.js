@@ -7,6 +7,7 @@ let fullScreenModal = new Image();
 fullScreenModal.src = "./assets/images/FullScreenModal.png";
 
 function gameLoop (){
+    ctx.fillRect(0, 0, 1920, 1080);
     if (canPlay){
         world.draw(ctx, character.x, character.y);
         character.draw();
@@ -22,6 +23,8 @@ function gameLoop (){
 let character = new Character(ctx);
 let actionBar = new ActionBar((1920 / 2) - (650 / 2), 1080 - 72);
 let world = new World(1600);
+
+console.log(world.tiles.length);
 
 tools.push(true);
 tools.push(true);

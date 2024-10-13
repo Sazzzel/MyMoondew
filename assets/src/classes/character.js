@@ -13,10 +13,10 @@ class Character{
         this.frameCounter = 0;
         this.lastFrame = 2;
         this.direction = 2;
-        this.speed = 0.5;
+        this.speed = 1;
         this.sprint = false;
-        this.x = 0;
-        this.y = 0;
+        this.x = -6400;
+        this.y = -6400;
         this.vx = 0;
         this.vy = 0;
     }
@@ -26,7 +26,7 @@ class Character{
     }
     //where and how to draw charater
     draw(){
-
+        console.log(this.x + " " + this.y);
         this.x -= this.vx;
         this.y += this.vy;
         if (this.sprint){
@@ -35,18 +35,18 @@ class Character{
         }
         
 
-        if (this.y > 5400){
-            this.y = 5400;
+        if (this.y > -960){
+            this.y = -960;
         }
 
-        if (this.y < -5400){
-            this.y = -5400;
+        if (this.y < -11840){
+            this.y = -11840;
         }
-        if (this.x > 5400){
-            this.x = 5400;
+        if (this.x > -960){
+            this.x = -960;
         }
-        if (this.x < -5400){
-            this.x = -5400;
+        if (this.x < -11840){
+            this.x = -11840;
         }
         
 
