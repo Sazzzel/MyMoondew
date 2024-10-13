@@ -22,6 +22,18 @@ class Tile {
                 this.img.src = "../MyMoondew/assets/images/Dirt.png";
                 break;
 
+            case"plowed":
+                this.img.src = "../MyMoondew/assets/images/Plowed.png";
+                break;
+
+            case"growing":
+                this.img.src = "../MyMoondew/assets/images/Growing.png";
+                break;
+
+            case"harvested":
+                this.img.src = "../MyMoondew/assets/images/Harvested.png";
+                break;
+
             
         }
     }
