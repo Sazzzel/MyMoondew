@@ -42,6 +42,14 @@ const music = new Audio("./assets/audio/music.mp3");
 music.loop = true;
 music.volume = 0.05;
 
+const day = new Audio("./assets/audio/Day.mp3");
+day.loop = true;
+day.volume = 0.05;
+
+const night = new Audio("./assets/audio/Night.mp3");
+night.loop = true;
+night.volume = 0.05;
+
 
 const logo = new Image();
 logo.src = "./assets/images/Logo.png";
@@ -60,15 +68,24 @@ logoa.onload = function () {
 
 let canPlay =false;
 
+
+
 document.addEventListener("click", () => {
     if (!canPlay){
         canPlay = true;
         music.play();
-        
+        day.play();
+        day.volume = 0;
+
         if (!debug){
             logoStage1();
+            setTimeout(() => {
+
+                day.volume = 0.05;
+            }, 8000);
         } else {
             gameLoop();
+            day.play();
         }
        
 
@@ -115,6 +132,7 @@ function logoStage2 (){
 
 function logoStage3 (){
     gameLoop();
+    
     let stage3 = setInterval(() => {
 
         stage1op += 0.01;

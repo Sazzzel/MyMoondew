@@ -19,7 +19,22 @@ class Character{
         this.y = -6400;
         this.vx = 0;
         this.vy = 0;
+        this.footstep = new Audio("../MyMoondew/assets/audio/walkGrass.mp3"); 
+        this.footstep.loop = true; // Loop the audio
+        this.footstep.volume = 0.1;
     }
+
+    
+        playFootsteps(speed = 1.0) {
+            this.footstep.playbackRate = speed; // Adjust playback speed (0.5 = half speed, 2.0 = double speed)
+            this.footstep.play(); // Start playing the audio
+
+        }
+
+        stopFootsteps() {
+            this.footstep.pause(); // Pause the audio
+            this.footstep.currentTime = 0; // Reset the audio to the beginning
+        }
 
     isMoving(){
         return (this.vx != 0 || this.vy != 0);
@@ -30,6 +45,16 @@ class Character{
         let vx = this.vx;
         let vy = this.vy;
     
+        if (vx !== 0 || vy !== 0) {
+            if(this.sprint){
+            this.playFootsteps(1.5);
+            } else {
+                this.playFootsteps(1);
+            }
+        } else {
+            this.stopFootsteps();
+        }
+
         if (this.vx !== 0 && this.vy !== 0) {
             vx /= (2);
             vy /= (2);
